@@ -1,0 +1,229 @@
+import {chatTheme as defaultTheme, ChatTheme} from 'reachat';
+
+// todo: dark / light mode
+// export const chatTheme: ChatTheme = {
+//   ... defaultTheme,
+//   base: 'dark:text-white text-gray-500',
+//   console: 'flex w-full gap-4 h-full',
+//   companion: 'w-full h-full overflow-hidden',
+//   empty: 'text-center flex-1',
+//   sessions: {
+//     base: 'overflow-auto',
+//     console:
+//         'min-w-[150px] w-[30%] max-w-[300px] dark:bg-[#11111F] bg-[#F2F3F7] p-5 rounded-3xl',
+//     companion: 'w-full h-full',
+//     group:
+//         'text-base dart:text-gray-400 text-gray-400 mt-4 hover:bg-transparent hover:text-gray-400 dark:hover:text-gray-400 mb-1',
+//     create: 'relative mb-4 rounded-[10px] text-white',
+//     session: {
+//       base: [
+//         'group my-1 rounded-[10px] p-2 text-gray-500 border border-transparent hover:bg-gray-300 hover:border-gray-400 [&_svg]:text-gray-500',
+//         'dark:text-typography dark:text-gray-400 dark:hover:bg-gray-800/50 dark:hover:border-gray-700/50 dark:[&_svg]:text-gray-200'
+//       ].join(' '),
+//       active: [
+//         'border border-gray-300 hover:border-gray-400 text-gray-700 bg-gray-200 hover:bg-gray-300 ',
+//         'dark:text-gray-500 dark:bg-gray-800/70 dark:border-gray-700/50 dark:text-white dark:border-gray-700/70 dark:hover:bg-gray-800/50',
+//         '[&_button]:!opacity-100'
+//       ].join(' '),
+//       delete: '[&>svg]:w-4 [&>svg]:h-4 opacity-0 group-hover:!opacity-50'
+//     }
+//   },
+//   messages: {
+//     base: '',
+//     console: 'flex flex-col mx-5 flex-1 overflow-hidden',
+//     companion: 'flex w-full h-full',
+//     back: 'self-start p-0 my-2',
+//     inner: 'flex-1 h-full flex flex-col',
+//     title: ['text-base font-bold text-gray-500', 'dark:text-gray-200'].join(
+//         ' '
+//     ),
+//     date: 'text-xs whitespace-nowrap text-gray-400',
+//     content: [
+//       'mt-2 flex-1 overflow-auto [&_hr]:bg-gray-200',
+//       'dark:[&_hr]:bg-gray-800/60'
+//     ].join(' '),
+//     header: 'flex justify-between items-center gap-2',
+//     showMore: 'mb-4',
+//     message: {
+//       base: 'mt-4 mb-4 flex flex-col p-0 rounded border-none bg-transparent',
+//       question: [
+//         'relative font-semibold mb-4 px-4 py-4 pb-2 rounded-3xl rounded-br-none text-typography border bg-gray-200 border-gray-300 text-gray-900',
+//         'dark:bg-gray-900/60 dark:border-gray-700/50 dark:text-gray-100'
+//       ].join(' '),
+//       response: ['relative data-[compact=false]:px-4 text-gray-900', 'dark:text-gray-100'].join(' '),
+//       overlay: `overflow-y-hidden max-h-[350px] after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-16 after:bg-gradient-to-b after:from-transparent dark:after:to-gray-900 after:to-gray-200`,
+//       cursor: 'inline-block w-1 h-4 bg-current',
+//       expand: 'absolute bottom-1 right-1 z-10',
+//       files: {
+//         base: 'mb-2 flex flex-wrap gap-3 ',
+//         file: {
+//           base: [
+//             'flex items-center gap-2 border border-gray-300 px-3 py-2 rounded-lg cursor-pointer',
+//             'dark:border-gray-700'
+//           ].join(' '),
+//           name: ['text-sm text-gray-500', 'dark:text-gray-200'].join(' ')
+//         }
+//       },
+//       sources: {
+//         base: 'my-4 flex flex-wrap gap-3',
+//         source: {
+//           base: [
+//             'flex gap-2 border border-gray-200 px-4 py-2 rounded-lg cursor-pointer',
+//             'dark:border-gray-700'
+//           ].join(' '),
+//           companion: 'flex-1 px-3 py-1.5',
+//           image: 'max-w-10 max-h-10 rounded-md w-full h-fit self-center',
+//           title: 'text-md block',
+//           url: 'text-sm text-blue-400 underline'
+//         }
+//       },
+//       markdown: {
+//         copy: 'sticky py-1 [&>svg]:w-4 [&>svg]:h-4 opacity-50',
+//         p: 'mb-2',
+//         a: 'text-blue-400 underline',
+//         table: 'table-auto w-full m-2',
+//         th: 'px-4 py-2 text-left font-bold border-b border-gray-500',
+//         td: 'px-4 py-2',
+//         code: 'm-2 rounded-b relative',
+//         toolbar: 'text-xs dark:bg-gray-700/50 flex items-center justify-between px-2 py-1 rounded-t sticky top-0 backdrop-blur-md bg-gray-200 ',
+//         li: 'mb-2 ml-6',
+//         ul: 'mb-4 list-disc',
+//         ol: 'mb-4 list-decimal'
+//       },
+//       footer: {
+//         base: 'mt-3 flex gap-1.5 text-gray-400',
+//         copy: [
+//           'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-200 hover:text-gray-500',
+//           'dark:hover:bg-gray-800 dark:hover:text-white'
+//         ].join(' '),
+//         upvote:
+//             'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white',
+//         downvote:
+//             'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white',
+//         refresh:
+//             'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white'
+//       }
+//     }
+//   },
+//   input: {
+//     base: 'flex mt-4 relative',
+//     upload: ['px-5 py-2 text-gray-400 size-10', 'dark:gray-500'].join(' '),
+//     input: [
+//       'w-full border rounded-3xl px-3 py-2 pr-16 text-gray-500 border-gray-200 hover:bg-blue-100 hover:border-blue-500 after:hidden after:!mx-10 bg-gray-800 [&>textarea]:w-full [&>textarea]:flex-none',
+//       'dark:border-gray-700/50 dark:text-gray-200 dark:bg-gray-950 dark:hover:bg-blue-950/40'
+//     ].join(' '),
+//     actions: {
+//       base: 'absolute flex gap-2 items-center right-5 inset-y-1/2 -translate-y-1/2 z-10',
+//       send: [
+//         'px-3 py-3 hover:bg-primary-hover rounded-full bg-gray-200 hover:bg-gray-300 text-gray-500',
+//         'dark:text-white dark:bg-gray-800 hover:dark:bg-gray-700'
+//       ].join(' '),
+//       stop: 'px-2 py-2 bg-red-500 text-white rounded-full hover:bg-red-700 '
+//     }
+//   }
+// };
+
+export const chatTheme: ChatTheme = {
+    ...defaultTheme,
+    base: 'text-white bg-[#11111F]',
+    console: 'flex w-full gap-4 h-full',
+    companion: 'w-full h-full overflow-hidden',
+    empty: 'text-center flex-1',
+    sessions: {
+        base: 'overflow-auto',
+        console:
+            'min-w-[150px] w-[30%] max-w-[300px] bg-[#11111F] p-5 rounded-3xl',
+        companion: 'w-full h-full',
+        group:
+            'text-base text-gray-400 mt-4 hover:bg-transparent hover:text-gray-400 mb-1',
+        create: 'relative mb-4 rounded-[10px] text-white',
+        session: {
+            base: [
+                'group my-1 rounded-[10px] p-2 text-gray-400 border border-transparent hover:bg-gray-800/50 hover:border-gray-700/50 [&_svg]:text-gray-200'
+            ].join(' '),
+            active: [
+                'text-white bg-gray-800/70 border border-gray-700/70 hover:bg-gray-800/50',
+                '[&_button]:!opacity-100'
+            ].join(' '),
+            delete: '[&>svg]:w-4 [&>svg]:h-4 opacity-0 group-hover:!opacity-50'
+        }
+    },
+    messages: {
+        base: '',
+        console: 'flex flex-col mx-5 flex-1 overflow-hidden',
+        companion: 'flex w-full h-full',
+        back: 'self-start p-0 my-2',
+        inner: 'flex-1 h-full flex flex-col',
+        title: 'text-base font-bold text-gray-200',
+        date: 'text-xs whitespace-nowrap text-gray-400',
+        content: [
+            'mt-2 flex-1 overflow-auto [&_hr]:bg-gray-800/60'
+        ].join(' '),
+        header: 'flex justify-between items-center gap-2',
+        showMore: 'mb-4',
+        message: {
+            base: 'mt-4 mb-4 flex flex-col p-0 rounded border-none bg-transparent',
+            question: 'relative text-right font-semibold mb-4 px-4 py-4 pb-2 rounded-3xl rounded-br-none text-white bg-[#343541] border border-[#444654] w-fit max-w-[80%] self-end',
+            response: 'relative data-[compact=false]:px-4 text-gray-100',
+            overlay: `overflow-y-hidden max-h-[350px] after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-16 after:bg-gradient-to-b after:from-transparent after:to-gray-900`,
+            cursor: 'inline-block w-1 h-4 bg-current',
+            expand: 'absolute bottom-1 right-1 z-10',
+            files: {
+                base: 'mb-2 flex flex-wrap gap-3',
+                file: {
+                    base: 'flex items-center gap-2 border border-gray-700 px-3 py-2 rounded-lg cursor-pointer',
+                    name: 'text-sm text-gray-200'
+                }
+            },
+            sources: {
+                base: 'my-4 flex flex-wrap gap-3',
+                source: {
+                    base: 'flex gap-2 border border-gray-700 px-4 py-2 rounded-lg cursor-pointer',
+                    companion: 'flex-1 px-3 py-1.5',
+                    image: 'max-w-10 max-h-10 rounded-md w-full h-fit self-center',
+                    title: 'text-md block',
+                    url: 'text-sm text-blue-400 underline'
+                }
+            },
+            markdown: {
+                copy: 'sticky py-1 [&>svg]:w-4 [&>svg]:h-4 opacity-50',
+                p: 'mb-2',
+                a: 'text-blue-400 underline',
+                table: 'table-auto w-full m-2',
+                th: 'px-4 py-2 text-left font-bold border-b border-gray-500',
+                td: 'px-4 py-2',
+                code: 'm-2 rounded-b relative',
+                toolbar: 'text-xs bg-gray-700/50 flex items-center justify-between px-2 py-1 rounded-t sticky top-0 backdrop-blur-md',
+                li: 'mb-2 ml-6',
+                ul: 'mb-4 list-disc',
+                ol: 'mb-4 list-decimal'
+            },
+            footer: {
+                base: 'mt-3 flex gap-1.5 text-gray-400',
+                copy:
+                    'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-800 hover:text-white',
+                upvote:
+                    'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white hidden',
+                downvote:
+                    'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white hidden',
+                refresh:
+                    'p-3 rounded-[10px] [&>svg]:w-4 [&>svg]:h-4 opacity-50 hover:!opacity-100 hover:bg-gray-700/40 hover:text-white hidden'
+            }
+        }
+    },
+    input: {
+        base: 'flex mt-4 relative',
+        upload: ['px-5 py-2 text-gray-400 size-10'].join(' '),
+        input: [
+            'w-full border rounded-3xl px-3 py-2 pr-16 text-gray-200 border-gray-700/50 hover:bg-blue-100 hover:border-blue-500 hover:bg-blue-950/40',
+            'after:hidden after:!mx-10 bg-gray-800 [&>textarea]:w-full [&>textarea]:flex-none'
+        ].join(' '),
+        actions: {
+            base: 'absolute flex gap-2 items-center right-5 inset-y-1/2 -translate-y-1/2 z-10',
+            send: [
+                'px-3 py-3 text-white rounded-full bg-gray-800 hover:bg-gray-700',
+            ].join(' '),
+            stop: 'px-2 py-2 bg-red-500 text-white rounded-full hover:bg-red-700 '
+        }
+    }
+};

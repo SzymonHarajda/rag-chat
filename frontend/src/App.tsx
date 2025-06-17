@@ -24,7 +24,7 @@ function App() {
     const ws = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        ws.current = new WebSocket("ws://localhost:3001");
+        ws.current = new WebSocket("ws://localhost:8000/chat");
 
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data);
@@ -33,13 +33,13 @@ function App() {
                 setSessions((prevSessions) => {
                     return prevSessions.map((session) => {
                         if (session.id === data.sessionId) {
-                            const updatedConversations = [...session.conversations];
-                            const last = updatedConversations[updatedConversations.length - 1];
-
-                            if (last) {
-                                last.response += data.word ? ` ${data.word}` : '';
-                                last.updatedAt = new Date();
-                            }
+                            const updatedConversations = session.conversations.length > 0
+                                ? [...session.conversations.slice(0, -1), {
+                                    ...session.conversations[session.conversations.length - 1],
+                                    response: session.conversations[session.conversations.length - 1].response + (data.word || ''),
+                                    updatedAt: new Date()
+                                }]
+                                : [];
 
                             return {
                                 ...session,

@@ -52,7 +52,7 @@ This project is a decision support tool that helps determine whether a given tas
 2. Install Python dependencies:
 
    ```bash
-   pip install fastapi sentence-transformers faiss-cpu httpx uvicorn
+   pip install fastapi sentence-transformers faiss-cpu httpx uvicorn langdetect
    ```
 
 3. Make sure the file `tasks.json` is present in the same directory.
